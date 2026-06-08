@@ -1,37 +1,30 @@
-# ⏱️ Client Billing System (VB.NET Windows Forms Project)
+# ✈️ Airplane Takeoff Calculator (VB.NET Windows Forms Project)
 
 ## Overview
 
-The Client Billing System is a VB.NET Windows Forms application designed to track billable time spent working for clients. The system allows users to select a client, start and stop a billing session, calculate the duration worked, and automatically save billing records to a file.
+The Airplane Takeoff Calculator is a VB.NET Windows Forms application that calculates the time and distance required for an aircraft to take off based on its acceleration and required takeoff velocity.
 
-This project simulates a simplified time-tracking and billing solution commonly used by consultants, freelancers, IT support technicians, and professional service providers.
+The application demonstrates object-oriented programming, mathematical modeling, engineering calculations, and event-driven GUI development. Users can select an aircraft from a list and instantly view its calculated takeoff performance.
 
 ---
 
 ## Features
 
-### Client Management
-- Load client names from a text file
-- Display clients in a dropdown list
-- Validate client selection before billing begins
-- Prevent unauthorized client access
+### Aircraft Selection
+- Select an aircraft from a predefined list
+- Display aircraft specifications
+- Interactive ListBox interface
 
-### Time Tracking
-- Start billing timer
-- Stop billing timer
-- Calculate total time worked
-- Display start and stop times
-- Calculate elapsed duration automatically
+### Flight Performance Calculations
+- Calculate required takeoff time
+- Calculate takeoff distance
+- Display acceleration data
+- Display takeoff velocity requirements
 
-### Billing Records
-- Automatically generate billing records
-- Save billing information to a text file
-- Record date, client, start time, stop time, and duration
-
-### User Validation
-- Confirm client access before billing
-- Validate user identity before starting a billing session
-- Prevent accidental billing entries
+### Dynamic Results
+- Automatic calculation when an aircraft is selected
+- Human-readable performance report
+- Real-time updates
 
 ---
 
@@ -40,128 +33,138 @@ This project simulates a simplified time-tracking and billing solution commonly 
 - VB.NET
 - Windows Forms
 - Object-Oriented Programming (OOP)
-- File Handling
-- Collections (List)
+- Mathematical Modeling
 - Event-Driven Programming
-- Time and Date Processing
 
 ---
 
 ## Project Structure
 
 ```text
-Client Billing System
+Airplane Takeoff Calculator
 │
 ├── Form1.vb
-│   ├── User Interface Logic
-│   ├── Client Validation
-│   ├── Billing Workflow
-│   └── Event Handling
+│   ├── Aircraft Selection Logic
+│   ├── Event Handling
+│   ├── Result Display
+│   └── User Interface Logic
 │
-├── BillingData.vb
-│   ├── Client File Loading
-│   ├── Billing Record Storage
-│   ├── Client Collection Management
-│   └── File Operations
+├── Aircraft.vb
+│   ├── Aircraft Properties
+│   ├── Takeoff Time Calculation
+│   ├── Takeoff Distance Calculation
+│   └── Aircraft Data Model
 │
-├── TimeClock.vb
-│   ├── Start Timer
-│   ├── Stop Timer
-│   ├── Duration Calculation
-│   └── Time Tracking Logic
+├── Form1.Designer.vb
+│   └── Windows Forms Layout
 │
-├── clients.txt
-│   └── Client Data Source
-│
-└── billing.txt
-    └── Generated Billing Records
+└── App.config
+    └── Application Configuration
 ```
 
 ---
 
-## Sample Client Data
+## Aircraft Data
 
-The system loads clients from an external file.
+The application contains the following aircraft:
+
+| Aircraft | Takeoff Velocity (ft/s) | Acceleration (ft/s²) |
+|-----------|------------------------|----------------------|
+| A-747 | 250 | 33.5 |
+| A-735 | 264 | 44.2 |
+| C-150 | 270 | 37.1 |
+| D-240 | 240 | 51.9 |
+
+---
+
+## Mathematical Model
+
+### Takeoff Time
+
+The time required for takeoff is calculated using:
+
+:contentReference[oaicite:0]{index=0}
+
+Where:
+
+- **t** = Time to takeoff
+- **v** = Takeoff velocity
+- **a** = Acceleration
+
+---
+
+### Takeoff Distance
+
+The takeoff distance is calculated using:
+
+:contentReference[oaicite:1]{index=1}
+
+Where:
+
+- **d** = Takeoff distance
+- **a** = Acceleration
+- **t** = Takeoff time
+
+---
+
+## Example Calculation
+
+### Aircraft: A-747
 
 ```text
-John Doe
-Jane Smith
-Michael Brown
-Emily Davis
-David Wilson
-Sarah Johnson
-Chris Lee
-Amanda Clark
-Robert Martinez
-Jessica Taylor
-Daniel Harris
-Laura White
+Takeoff Velocity = 250 ft/s
+Acceleration = 33.5 ft/s²
 ```
 
-Source: Client data file. :contentReference[oaicite:0]{index=0}
+### Step 1: Calculate Time
+
+```text
+Time = Velocity ÷ Acceleration
+
+Time = 250 ÷ 33.5
+
+Time ≈ 7.46 seconds
+```
+
+### Step 2: Calculate Distance
+
+```text
+Distance = 0.5 × 33.5 × (7.46²)
+
+Distance ≈ 932.84 feet
+```
 
 ---
 
 ## Application Workflow
 
-### Step 1: Select Client
+### Step 1
 
-Choose a client from the dropdown list.
+Launch the application.
 
-```text
-Select Client
-      ↓
-Validate Access
-```
+### Step 2
 
-### Step 2: Start Billing
+Select an aircraft from the list.
 
 ```text
-Click Start
-      ↓
-Record Start Time
-      ↓
-Begin Timer
+A-747
+A-735
+C-150
+D-240
 ```
 
-### Step 3: Perform Work
+### Step 3
 
-The application tracks elapsed time while work is being completed.
+The application automatically:
 
-### Step 4: Stop Billing
+- Retrieves aircraft specifications
+- Calculates takeoff time
+- Calculates takeoff distance
+- Displays results
 
-```text
-Click Stop
-      ↓
-Record Stop Time
-      ↓
-Calculate Duration
-      ↓
-Save Billing Record
-```
+### Step 4
 
----
-
-## Example Billing Record
-
-```text
-08/06/2026,
-John Doe,
-09:00 AM,
-11:30 AM,
-2,
-30,
-0
-```
-
-Meaning:
-
-```text
-Client: John Doe
-Start: 09:00
-End: 11:30
-Duration: 2 Hours 30 Minutes
-```
+Review the generated performance report.
 
 ---
 
@@ -169,57 +172,22 @@ Duration: 2 Hours 30 Minutes
 
 ### Encapsulation
 
-The TimeClock class manages:
+The Aircraft class stores:
 
-- Start Time
-- Stop Time
-- Elapsed Time
-- Timer State
+- Aircraft Name
+- Takeoff Velocity
+- Acceleration
 
-### Data Management
+### Computed Properties
 
-The BillingData class handles:
+The application uses calculated properties for:
 
-- Client loading
-- File storage
-- Billing record creation
+- Takeoff Time
+- Takeoff Distance
 
-### Separation of Concerns
+### Object Collections
 
-The application separates:
-
-- User Interface
-- Time Tracking Logic
-- Data Processing
-- File Storage
-
----
-
-## Key Features Demonstrated
-
-### Time Tracking System
-
-```text
-Start Time
-      ↓
-Elapsed Time
-      ↓
-Stop Time
-      ↓
-Duration Calculation
-```
-
-### Client Validation
-
-The application requires confirmation before client billing begins.
-
-### File Persistence
-
-Billing records are stored permanently in a text file for future reference.
-
-### Collection Management
-
-Client names are loaded into a collection and displayed dynamically.
+Multiple Aircraft objects are created and stored in an array for selection and processing.
 
 ---
 
@@ -228,11 +196,11 @@ Client names are loaded into a collection and displayed dynamically.
 - VB.NET Development
 - Windows Forms Development
 - Object-Oriented Programming
-- Time Tracking Systems
-- File Processing
-- Data Validation
-- Event-Driven Programming
-- Business Application Development
+- Engineering Calculations
+- Mathematical Modeling
+- Event Handling
+- Data Structures
+- Desktop Application Development
 
 ---
 
@@ -240,13 +208,12 @@ Client names are loaded into a collection and displayed dynamically.
 
 This project demonstrates:
 
-- Building productivity software
-- Implementing timer functionality
-- Managing external data files
-- Tracking user activity
-- Creating billing workflows
-- Designing desktop applications
-- Working with collections and file storage
+- Building engineering calculation software
+- Working with formulas and equations
+- Using object-oriented design
+- Creating interactive desktop applications
+- Implementing computed properties
+- Managing collections of objects
 
 ---
 
@@ -254,36 +221,25 @@ This project demonstrates:
 
 The concepts used in this project can be applied to:
 
-- Freelancer Time Tracking Systems
-- IT Support Billing Applications
-- Legal Practice Time Recording
-- Consulting Services Billing
-- Employee Timesheet Systems
-- Project Time Management Tools
+- Aviation Planning Software
+- Flight Simulation Systems
+- Aircraft Performance Analysis
+- Aerospace Engineering Tools
+- Transportation Modeling Systems
+- Engineering Calculation Applications
 
 ---
 
 ## Future Improvements
 
-- Hourly Rate Calculations
-- Automatic Invoice Generation
-- PDF Billing Reports
-- Client Database Integration
-- Authentication System
-- Project-Based Billing
-- Billing Dashboard
-- Cloud Data Storage
-
----
-
-## Screenshots
-
-Add screenshots showing:
-
-- Client Selection Screen
-- Billing Session Started
-- Billing Session Completed
-- Saved Billing Records
+- Add more aircraft models
+- Allow custom aircraft entry
+- Metric and Imperial unit conversion
+- Aircraft comparison mode
+- Performance charts and graphs
+- Export calculation reports
+- Database integration
+- Flight simulation enhancements
 
 ---
 
@@ -294,11 +250,11 @@ Add screenshots showing:
 Comp Sci & IT Student | Software Developer
 
 ### Skills Demonstrated
+
 - VB.NET Development
-- Desktop Application Development
 - Object-Oriented Design
-- File Processing
-- Time Tracking Systems
-- Business Application Development
-- Event Handling
-- Software Design Principles
+- Mathematical Programming
+- Engineering Calculations
+- Event-Driven Programming
+- Desktop Application Development
+- Problem Solving
